@@ -1,0 +1,118 @@
+/* Global layout */
+body {
+  font-family: "Poppins", sans-serif;
+  background: #202020;
+  color: white;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Main container */
+.container {
+  width: 95%;
+  max-width: 1200px;
+  text-align: center;
+}
+
+/* Number keyboard grid */
+.keyboard {
+  display: grid;
+  grid-template-columns: repeat(25, 1fr);
+  /* 20 numbers in a line */
+  gap: 6px;
+  margin: 20px auto;
+}
+
+.number {
+  background: #333;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: center;
+  transition: 0.2s ease;
+  font-size: 14px;
+}
+
+.number:hover {
+  background: #555;
+  transform: scale(1.15);
+}
+
+.number.clicked {
+  background: gold;
+  color: black;
+  font-weight: bold;
+  transform: scale(1.2);
+}
+
+/* Dice styling */
+.dice-img {
+  width: 150px;
+  height: 150px;
+  margin: 20px auto;
+  border-radius: 12px;
+  background: white;
+  padding: 10px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  transition: transform 0.2s ease;
+}
+
+.dice-img:active {
+  transform: scale(1.1);
+}
+
+/* Button styling */
+button {
+  padding: 14px 30px;
+  font-size: 20px;
+  background: #ff3c3c;
+  border: none;
+  color: white;
+  border-radius: 12px;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: 0.2s ease;
+}
+
+button:hover {
+  background: #ff6a6a;
+  transform: scale(1.05);
+}
+
+/* Score styling */
+h2 {
+  margin-top: 10px;
+  font-size: 28px;
+  text-shadow: 0 0 10px cyan;
+}
+
+/* Default key style */
+.key {
+  background: #333;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: center;
+  transition: 0.25s ease;
+  font-size: 14px;
+  border: 2px solid transparent;
+}
+
+/* Hover effect */
+.key:hover {
+  background: #444;
+  transform: scale(1.1);
+}
+
+/* Active (highlighted) key */
+.key.active {
+  background: gold;
+  color: black;
+  font-weight: bold;
+  transform: scale(1.2);
+  border-color: rgb(255, 230, 0);
+  box-shadow: 0 0 10px gold, 0 0 20px gold;
+}
