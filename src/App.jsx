@@ -18,7 +18,8 @@ const App = () => {
   const [currentDice, setCurrentDice] = useState(qn);
   const [count, setCount] = useState(0);
   const [Keys, setKeys] = useState(digits);
-  const [unused, setUnused] = useState([]); 
+  const [used, setUsed] = useState([]);
+
 
   function rollDice() {
     const randomIndex = Math.floor(Math.random() * 6) + 1;
@@ -27,18 +28,22 @@ const App = () => {
     setCurrentDice(dices[randomIndex]);
     setCount(newTotal);
 
-    // store all previously visited numbers
-    setUnused(prev => [...new Set([...prev, newTotal])]);
+    setUsed([...used, newTotal]);
   }
 
+  function undo() {
+    used.pop();
+    const lastUsed = used[used.length - 1] || 0;
+    setCount(lastUsed);
+    setUsed([...used]);
+  }
   return (
     <div className="container">
-
       <div className="keyboard">
         {Keys.map((obj) => (
           <div
             key={obj}
-            className={unused.includes(obj) ? 'key active' : 'key'}
+            className={used.includes(obj) ? 'key active' : 'key'}
           >
             {obj}
           </div>
@@ -48,6 +53,7 @@ const App = () => {
       <img className="dice-img" src={currentDice} alt="Current Dice" />
       <h2>Total: {count}</h2>
       <button onClick={rollDice}>Roll Dice</button>
+      <button className="undo" onClick={undo}>Undo</button>
     </div>
   );
 };
